@@ -1,0 +1,69 @@
+#include <iostream>
+
+class Car {
+private:
+  std::string make;
+  std::string model;
+  int year;
+  int speed;
+
+public:
+  Car(const std::string& make, const std::string& model, int year) {
+    this->make = make;
+    this->model = model;
+    this->year = year;
+    this->speed = 0;
+  }
+
+  ~Car() {
+    std::cout << "Car is being destroyed" << std::endl;
+  }
+
+  void accelerate() {
+    this->speed += 5;
+  }
+
+  void brake() {
+    if (this->speed > 0) {
+      this->speed -= 5;
+    }
+  }
+
+  void displaySpeed() {
+    std::cout << "Current speed: " << this->speed << " mph" << std::endl;
+  }
+
+  void displayInfo() {
+    std::cout << "Make: " << this->make << std::endl;
+    std::cout << "Model: " << this->model << std::endl;
+    std::cout << "Year: " << this->year << std::endl;
+  }
+};
+
+int main() {
+  std::string make, model;
+  int year;
+
+  std::cout << "Enter the make of the car: ";
+  std::cin >> make;
+
+  std::cout << "Enter the model of the car: ";
+  std::cin >> model;
+
+  std::cout << "Enter the year of the car: ";
+  std::cin >> year;
+
+  Car car(make, model, year);
+
+  car.displayInfo();
+
+  car.accelerate();
+  car.accelerate();
+  car.displaySpeed();
+
+  car.brake();
+  car.brake();
+  car.displaySpeed();
+
+  return 0;
+}
