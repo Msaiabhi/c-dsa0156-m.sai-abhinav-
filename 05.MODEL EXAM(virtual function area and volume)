@@ -1,0 +1,95 @@
+#include <iostream>
+
+using namespace std;
+
+class Shape {
+public:
+    virtual double area() = 0;
+    virtual double volume() = 0;
+};
+
+class Sphere : public Shape {
+private:
+    double radius;
+
+public:
+    Sphere() : radius(0) {}
+
+    void setRadius(double r) {
+        radius = r;
+    }
+
+    double area() override {
+        return 4 * 3.14159 * radius * radius;
+    }
+
+    double volume() override {
+        return (4 / 3) * 3.14159 * radius * radius * radius;
+    }
+};
+
+class Cylinder : public Shape {
+private:
+    double radius;
+    double height;
+
+public:
+    Cylinder() : radius(0), height(0) {}
+
+    void setRadius(double r) {
+        radius = r;
+    }
+
+    void setHeight(double h) {
+        height = h;
+    }
+
+    double area() override {
+        return 2 * 3.14159 * radius * radius + 2 * 3.14159 * radius * height;
+    }
+
+    double volume() override {
+        return 3.14159 * radius * radius * height;
+    }
+};
+
+int main() {
+    int choice;
+    double radius, height;
+
+    cout << "Choose the shape you want to calculate the area and volume for:" << endl;
+    cout << "1. Sphere" << endl;
+    cout << "2. Cylinder" << endl;
+
+    cin >> choice;
+
+    if (choice == 1) {
+        Sphere sphere;
+
+        cout << "Enter the radius of the sphere: ";
+        cin >> radius;
+
+        sphere.setRadius(radius);
+
+        cout << "The area of the sphere is: " << sphere.area() << endl;
+        cout << "The volume of the sphere is: " << sphere.volume() << endl;
+    } else if (choice == 2) {
+        Cylinder cylinder;
+
+        cout << "Enter the radius of the cylinder: ";
+        cin >> radius;
+
+        cout << "Enter the height of the cylinder: ";
+        cin >> height;
+
+        cylinder.setRadius(radius);
+        cylinder.setHeight(height);
+
+        cout << "The area of the cylinder is: " << cylinder.area() << endl;
+        cout << "The volume of the cylinder is: " << cylinder.volume() << endl;
+    } else {
+        cout << "Invalid choice. Please enter 1 or 2." << endl;
+    }
+
+    return 0;
+}
