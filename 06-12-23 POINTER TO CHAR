@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	char input;
+	cout<<"enter the input";
+	cin>>input;
+	char*ptr=&input;
+	cout<<"the char value is"<<input;
+	return 0;
+}
