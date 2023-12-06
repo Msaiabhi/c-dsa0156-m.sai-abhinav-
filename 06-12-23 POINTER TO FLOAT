@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	float input;
+	cout<<"enter the input";
+	cin>>input;
+	float*ptr=&input;
+	cout<<"the float value is"<<input;
+	return 0;
+}
